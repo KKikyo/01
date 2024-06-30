@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>my page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-image: url('1455180.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+
+      font-family: 'Noto Serif JP', sans-serif;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0);
+      /* 设置文本框背景颜色为半透明 */
+      text-align: center;
+      width: 80%;
+    }
+
+    .header {
+      text-align: right;
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .pic01 {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .pic01 img {
+      width: 100vw;
+      height: auto;
+      display: block;
+      margin-left: -10vw;
+      margin-right: -10vw;
+      filter: blur(10px);
+      transition: filter 1s ease-in-out;
+    }
+
+
+
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Dancing Script', cursive;
+      font-size: 4em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-weight: 300;
+    }
+
+    .about {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .s1 {
+      width: 350px;
+      height: 350px;
+      overflow: hidden;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+
+    .s1 img {
+      width: 300%;
+      height: 300%;
+      object-fit: cover;
+    }
+
+    .left {
+      align-self: flex-start;
+    }
+
+    .right {
+      align-self: flex-end;
+    }
+
+    .spacer {
+      height: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .timeline {
+      max-width: 400px;
+      width: 100%;
+      margin: 50px auto;
+      padding: 0 30px;
+    }
+
+    .timeline li {
+      position: relative;
+      list-style: none;
+      padding: 0 0 20px 0;
+    }
+
+    .timeline dl {
+      margin: 0 0 20px 3em;
+    }
+
+    dd {
+      margin-bottom: 20px;
+      line-height: 1.6;
+      border: none;
+      background-color: transparent;
+    }
+
+    .border-line {
+      position: absolute;
+      left: 0.2em;
+      top: 0;
+      width: 2px;
+      height: 0;
+      background: #ccc;
+    }
+
+    .timeline li::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: #666;
+      border-radius: 50%;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .image-container {
+      text-align: center;
+      width: 22%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .image-container p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .section-spacing {
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    .new-image-row {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 20px;
+    }
+
+    .new-image-row div {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .a1 {
+      margin-top: 10px;
+    }
+
+    .a2 {
+      margin-top: 50px;
+    }
+
+    .a3 {
+      margin-top: 30px;
+    }
+
+    .new-image-row img {
+      width: 200px;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .centered-text {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .styled-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .styled-img:hover {
+      transform: scale(1.1);
+      border: 5px solid transparent;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .styled-text {
+      font-family: 'Noto Serif JP', sans-serif;
+      font-size: 16px;
+      color: #333;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(45deg, #875089, #3b58b8);
+      /* 使用较暗的紫色和蓝色渐变 */
+      -webkit-background-clip: text;
+      color: transparent;
+      padding: 10px;
+    }
+
+    .border-container {
+      background-image: url('—Pngtree—.png');
+      background-size: 210% 115%;
+      /* 根据需要调整 */
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px;
+      /* 根据需要调整内边距以适应边框 */
+      box-sizing: border-box;
+    }
+
+    .title-container {
+      position: relative;
+      display: inline-block;
+      /* 确保容器大小根据内容自适应 */
+    }
+
+    .grey {
+      background-color: rgba(211, 211, 211, 0.5);
+      /* 浅灰色，透明度为50% */
+      border-radius: 15px;
+      /* 圆角 */
+      padding: 20px;
+      /* 根据需要调整内边距 */
+      box-sizing: border-box;
+    }
+
+    .about-container {
+      background-color: rgba(211, 211, 211, 0.5);
+      /* 浅灰色，透明度为50% */
+      border-radius: 15px;
+      /* 圆角 */
+      padding: 20px;
+      /* 根据需要调整内边距 */
+      box-sizing: border-box;
+
+    }
+
+    .image-cat {
+      margin-top: 100px;
+    }
+
+    .image-cat img {
+      width: 20%;
+      /* 你可以根据需要调整宽度，例如 50% */
+      height: auto;
+      /* 确保高度根据宽度自动调整 */
+      border-radius: 10px;
+      /* 可选：设置图片圆角 */
+    }
+
+
+    .image-cat2 {
+      margin-top: 100px;
+    }
+
+    .image-cat2 img {
+      width: 10%;
+      /* 你可以根据需要调整宽度，例如 50% */
+      height: auto;
+      /* 确保高度根据宽度自动调整 */
+      border-radius: 10px;
+      /* 可选：设置图片圆角 */
+    }
+
+    .image-cat3 {
+      margin-top: 150px;
+    }
+
+    .image-cat3 img {
+      width: 20%;
+      /* 你可以根据需要调整宽度，例如 50% */
+      height: auto;
+      /* 确保高度根据宽度自动调整 */
+      border-radius: 10px;
+      /* 可选：设置图片圆角 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+
+    </header>
+
+    <main>
+      <div class="pic01">
+        <nav class="header">
+          <a href="#about">About</a>
+          <a href="#life">Life</a>
+          <a href="#here">Here</a>
+        </nav>
+        <img src="pexels-mikhail-nilov-6944906.jpg" alt="pic01">
+        <div class="overlay-text">
+          My Encounter with Mysticism
+        </div>
+      </div>
+
+
+      <style>
+        .background-text {
+          position: relative;
+          padding: 20px;
+          background-image: url('00182.jpg');
+          background-size: cover;
+          background-position: center;
+          color: white;
+          /* 文字颜色，如果背景图片较亮，可以调整为黑色或其他颜色 */
+        }
+      </style>
+
+
+      <section class="life section-spacing">
+        <div class="image-cat">
+          <img src="dancing_l.png" alt="dancing image 1">
+        </div>
+        <div class="title-container" style="position: relative; display: inline-block;">
+          <h2 class="dtitle">私とタロットカード</h2>
+          <h3 class="sub-title" style="margin-bottom: 40px;">The Tarot and I</h3>
+          <div class="border-container">
+            <ul class="timeline">
+              <li>
+                <img src="4.png" alt="Image 1" style="width: 50px; height: auto;">
+                <dl>
+                  <dt style="margin-bottom: 20px; font-weight: bold; ">タロットカードカードとの出会い </dt>
+                  <dd>
+                    自分の内面を深く探求したい<br>
+                    という衝動に駆られ、<br>
+                    タロットカードを本格的に学び始めた。<br>
+                    各カードの象徴とその奥深い意味を<br>
+                    一つ一つ紐解きながら、<br>
+                    神秘的な世界に魅了されていく。<br>
+                    タロットが持つ独特の語り口に、<br>
+                    心が次第に引き寄せられていく。
+                  </dd>
+                </dl>
+                <span class="border-line"></span>
+              </li>
+              <li>
+                <img src="4.png" alt="Image 2" style="width: 50px; height: auto;">
+                <dl>
+                  <dt style="margin-bottom: 20px;font-weight: bold;">日運との対話</dt>
+                  <dd>
+                    毎朝、日運を占うことでタロット<br>
+                    との絆を深めていった。<br>
+                    カードが描く一日一日の物語は、<br>
+                    日常に新たな視点をもたらしてくれる。<br>
+                    タロットは静かに語りかける友のように、<br>
+                    日々の暮らしの中で存在感を増していく。
+                  </dd>
+                </dl>
+                <span class="border-line"></span>
+              </li>
+              <li>
+                <img src="4.png" alt="Image 3" style="width: 50px; height: auto;">
+                <dl>
+                  <dt style="margin-bottom: 20px;font-weight: bold;">他者への啓示</dt>
+                  <dd>
+                    友人や知人の学業、恋愛、仕事の相談に<br>
+                    タロットを使い始めた。<br>
+                    カードが紡ぎ出すメッセージは、<br>
+                    彼らの迷いや不安を解きほぐし、
+                    新たな光をもたらしてくれる。<br>
+                    タロットの魔法を通じて、<br>
+                    人々に希望と導きを提供することに<br>
+                    喜びを感じている。
+                  </dd>
+                </dl>
+                <span class="border-line"></span>
+              </li>
+            </ul>
+      </section>
+
+
+      <div class="image-cat2">
+        <img src="thinking_l.png" alt="dancing image 2">
+      </div>
+
+      <section class="part2">
+        <h2 class="dtitle">好きなタロットカード</h2>
+        <h3 class="sub-title" style="margin-bottom: 40px;">Beloved Tarot Cards</h3>
+
+
+        <div class="about-container" style="padding-left: 50px; padding-right: 50px;">
+          <div class="about-item" style="display: flex; align-items: center; margin-bottom: 40px;">
+            <img src="IMG_1259.JPG" alt="s1" class="styled-img" style="margin-right: 20px;">
+            <p class="styled-text" style="flex: 1; margin-left: 20px; line-height: 30px;">
+              復古韋特タロットカードは、<br>
+              そのクラシックなデザインと豊かな象徴性で、<br>
+              多くの人々に愛されている。<br>
+              鮮やかな色彩と詳細な描写が、<br>
+              カード一枚一枚に深い物語を宿している。<br>
+              伝統と歴史が織り成すこのデッキは、<br>
+              初めてタロットを手にする人にも親しみやすい。
+            </p>
+          </div>
+          <div class="about-item" style="display: flex; align-items: center; margin-bottom: 40px;">
+            <p class="styled-text" style="flex: 1; margin-right: 20px; line-height: 30px;">
+              霊眼タロットカードカードは、<br>
+              その名の通り、霊的な洞察力を高める力を持つ。<br>
+              神秘的な図案と鮮やかな色彩が、<br>
+              直感を研ぎ澄まし、深い瞑想の世界へと誘う。<br>
+              心の奥底に眠る真実を引き出す力がある。
+            </p>
+            <img src="IMG_1260.JPG" alt="s1" class="styled-img" style="margin-left: 20px;">
+          </div>
+          <div class="about-item" style="display: flex; align-items: center;">
+            <img src="IMG_1261.JPG" alt="s1" class="styled-img" style="margin-right: 20px;">
+            <p class="styled-text" style="flex: 1; margin-left: 20px; line-height: 30px;">
+              異教徒タロットカードは、<br>
+              異教の神秘と魔法を感じさせる<br>
+              独特のデザインが特徴だ。<br>
+              エキゾチックな図案と深淵なシンボリズムが、<br>
+              見る者を異世界へと連れ去る。<br>
+              日常の枠を超えた新たな視点を提供してくれる。
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+
+
+
+
+      <section class="here section-spacing">
+        <div class="image-cat3">
+          <img src="face_ll.png" alt="dancing image 2">
+        </div>
+        <h2 class="dtitle">お気に入りの大アルカナ</h2>
+        <h3 class="sub-title" style="margin-bottom: 40px;">Cherished Major Arcana Cards</h3>
+        <div class="grey">
+          <h4 class="decorative-font" style="margin-top:50px">The Fool</h4>
+          <div class="new-image-row">
+            <div class="a1">
+              <img class="three" src="愚者.png" alt="新图片1">
+            </div>
+            <div class="a2">
+              <img class="three" src="IMG_1282.jpg" alt="新图片2">
+            </div>
+            <div class="a3">s
+              <img class="three" src="IMG_1287.jpg" alt="新图片3">
+            </div>
+          </div>
+          <div class="text-with-background-green">
+            <p class="vertical-text centered-text" style="line-height: 33px; margin-top:50px; margin-bottom: 30px;">
+              愚者のカードは、<br>
+              無限の可能性を象徴する。<br>
+              崖の端に立ち、<br>
+              旅の始まりを告げる姿は、<br>
+              未知への冒険と新たな始まりを意味する。<br>
+              彼の無邪気な表情と軽やかな足取りは、<br>
+              心の奥底に眠る自由と無垢を呼び覚ます。<br>
+              常識や固定観念に縛られず、<br>
+              直感と好奇心に従って行動する。<br>
+              私たちにリスクを恐れず、<br>
+              新しい道を切り開く勇気を教えてくれる。<br>
+              愚者は、<br>
+              人生のどの瞬間にも潜む可能性を信じ、<br>
+              自分の内なる声に耳を傾けることの<br>
+              大切さを示している。
+            </p>
+
+
+          </div>
+          <h4 class="decorative-font" style="margin-top:150px">The Hanged Man</h4>
+          <div class="new-image-row">
+            <div class="a1">
+              <img class="three" src="01.png" alt="新图片1">
+            </div>
+            <div class="a2">
+              <img class="three" src="IMG_1281.jpg" alt="新图片2">
+            </div>
+            <div class="a3">
+              <img class="three" src="IMG_1285.jpg" alt="新图片3">
+            </div>
+          </div>
+          <div class="text-with-background-blue">
+            <p class="vertical-text centered-text" style="line-height: 33px; margin-top:50px; margin-bottom:30px;">
+              吊るされた男は、<br>
+              逆さまの視点から<br>
+              見ることで得られる洞察を象徴する。<br>
+              彼の静かな表情と安らかな姿勢は、<br>
+              自己犠牲と内省の象徴である。<br>
+              このカードは、<br>
+              困難な状況に直面したときに、<br>
+              状況を逆転させて<br>
+              新たな視点を得ることの重要性を<br>
+              教えてくれる。<br>
+              吊るされた男は、<br>
+              外界の喧騒から離れ、<br>
+              自分自身と向き合う時間を持つことの<br>
+              大切さを示している。<br>
+              彼の姿は、<br>
+              内なる成長と精神的な目覚めを促す、<br>
+              深い瞑想の象徴である。<br>
+            </p>
+          </div>
+          <h4 class="decorative-font" style="margin-top:150px">The Moon</h4>
+          <div class="new-image-row">
+            <div class="a1">
+              <img class="three" src="ス.png" alt="新图片1">
+            </div>
+            <div class="a2">
+              <img class="three" src="IMG_1283.jpg" alt="新图片2">
+            </div>
+            <div class="a3">
+              <img class="three" src="IMG_1286.jpg" alt="新图片3">
+            </div>
+          </div>
+          <div class="text-with-background-yellow">
+            <p class="vertical-text centered-text" style="line-height: 33px; margin-top:50px; margin-bottom: 30px;">
+              月のカードは、<br>
+              潜在意識と夢の世界を象徴する。<br>
+              夜空に浮かぶ月の光は、<br>
+              私たちの深層心理に光を当てる。<br>
+              月のカードは、<br>
+              不安や幻想、隠された真実を<br>
+              映し出す鏡のような存在である。<br>
+              彼女の淡い光は、<br>
+              心の奥底に眠る感情や欲望を呼び覚まし、<br>
+              私たちに自己探求の旅を促す。<br>
+              月は、直感と感性を研ぎ澄まし、<br>
+              見えないものを感じ取る力を高めてくれる。<br>
+              彼女の静かな輝きは、<br>
+              暗闇の中で道を見つけるための<br>
+              内なる光を象徴している。<br>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="image-slider">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="pexels-anete-lusina-4790546.jpg" alt="Image 1">
+            <img src="n4.jpeg" alt="Image 2">
+            <img src="n1.jpeg" alt="Image 3">
+            <img src="n2.jpeg" alt="Image 4">
+            <!-- Duplicate images for seamless scrolling -->
+            <img src="n3.jpeg" alt="Image 1">
+            <img src="n5.jpeg" alt="Image 2">
+            <img src="n6.jpeg" alt="Image 3">
+            <img src="n7.jpeg" alt="Image 4">
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .image-slider {
+          overflow: hidden;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0px 0;
+          background-color: #e8e4d2d0;
+          /* 可根据需要调整背景色 */
+        }
+
+        .slider {
+          display: flex;
+          width: 200%;
+          /* 双倍宽度以容纳两组图片 */
+        }
+
+        .slider-track {
+          display: flex;
+          animation: scroll 20s linear infinite;
+        }
+
+        .slider-track img {
+          width: 200px;
+          /* 可根据需要调整图片大小 */
+          margin-right: 10px;
+        }
+
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      </style>
+
+
+
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+        .decorative-font {
+          font-family: 'Dancing Script', cursive;
+          font-size: 36px;
+          /* 根据需要调整字体大小 */
+          color: #525050ab;
+          /* 根据需要调整字体颜色 */
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+          /* 添加装饰性的文本阴影 */
+          background: linear-gradient(45deg, #caa7cb, #8998c9);
+        }
+
+
+        .dtitle {
+          margin-top: 5px;
+          margin-bottom: 20px;
+          font-family: 'Noto Serif JP', sans-serif;
+          color: #5435709b;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+      </style>
+
+      <img src="2.png" alt="shuijingqiu" style="width: 300px; height: auto;">
+
+      <style>
+        .vertical-text {
+          writing-mode: vertical-rl;
+          text-orientation: upright;
+          width: 100%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      </style>
+
+
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+        .sub-title {
+          font-family: 'Quicksand', sans-serif;
+          font-size: 15px;
+          color: #424f68;
+        }
+      </style>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2024 K_diary</p>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>
+    //線が伸びるための設定を関数でまとめる
+    function ScrollTimelineAnime() {
+      $('.timeline li').each(function () {// それぞれのli要素の
+        var elemPos = $(this).offset().top;// 上からの高さ取得
+        var scroll = $(window).scrollTop();// スクロール値取得
+        var windowHeight = $(window).height();// windowの高さ取得
+        var startPoint = 100; //線をスタートさせる位置を指定※レイアウトによって調整してください
+        if (scroll >= elemPos - windowHeight - startPoint) {
+          var H = $(this).outerHeight(true)//liの余白と高さを含めた数値を取得
+          //スクロール値から要素までの高さを引いた値を、liの高さの半分のパーセントで出す
+          var percent = (scroll + startPoint - elemPos) / (H / 2) * 100;//liの余白と高さの半分で線を100％に伸ばす
+
+          // 100% を超えたらずっと100%を入れ続ける
+          if (percent > 100) {
+            percent = 100;
+          }
+          // ボーダーの長さをセット
+          $(this).children('.border-line').css({
+            height: percent + "%", //CSSでパーセント指定
+          });
+        }
+      });
+    }
+
+    // 画面をスクロールをしたら動かしたい場合の記述
+    $(window).on('scroll', function () {
+      ScrollTimelineAnime();// 線が伸びる関数を呼ぶ
+    });
+
+    // ページが読み込まれたらすぐに動かしたい場合の記述
+    $(window).on('load', function () {
+      ScrollTimelineAnime();// 線が伸びる関数を呼ぶ
+    });
+
+  </script>
+
+  <script>
+    $(window).on('load', function () {
+      $('.pic01 img').css('filter', 'blur(0)');
+    });
+  </script>
+
+  <script src="js/9-1-6.js"></script>
+
+</body>
+
+</html>
